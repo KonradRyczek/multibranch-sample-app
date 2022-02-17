@@ -6,16 +6,28 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh './gradlew clean check --no-daemon'
+        echo "build"
       }
     }
-  }
-  post {
-    always {
-        junit(
-          allowEmptyResults: true, 
-          testResults: '**/build/test-results/test/*.xml'
-        )
+    
+    stage('for the x branch') {
+      when {
+        branch "random"
+      }
+      steps {
+        echo "whatever branch"
+      }
     }
+    
+    stage('fot the pr') {
+      when {
+        branch "PR-*"
+      }
+      steps {
+        echo "pr"
+      }
+    }
+    
+    
   }
 }
