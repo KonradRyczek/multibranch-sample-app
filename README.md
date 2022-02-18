@@ -1,2 +1,2 @@
 # multibranch-sample-app
-jenkins multipipeline testing
+jenkins multipipeline testing for comment on PR.
